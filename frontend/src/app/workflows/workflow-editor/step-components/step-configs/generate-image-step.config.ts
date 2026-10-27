@@ -43,7 +43,7 @@ export const GENERATE_IMAGE_STEP_CONFIG: StepConfig = {
       label: 'Model',
       type: 'select',
       options: model_options,
-      defaultValue: 'gemini-3.1-flash-image',
+      defaultValue: 'gemini-nano-banana-2.1',
     },
     {
       name: 'aspect_ratio',

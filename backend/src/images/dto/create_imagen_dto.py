@@ -47,7 +47,7 @@ class CreateImagenDto(BaseDto):
     )
 
     metadata_generation_model: GenerationModelEnum | str | None = Field(
-        default=GenerationModelEnum.GEMINI_3_5_FLASH,
+        default=GenerationModelEnum.GEMINI_3_8_FLASH,
         description="The Gemini model to use for synchronous metadata generation.",
     )
     titles: list[str] | None = Field(
@@ -60,7 +60,7 @@ class CreateImagenDto(BaseDto):
     )
 
     generation_model: GenerationModelEnum = Field(
-        default=GenerationModelEnum.GEMINI_3_1_FLASH_IMAGE_PREVIEW,
+        default=GenerationModelEnum.GEMINI_NANO_BANANA_2_1,
         description="Model used for image generation.",
     )
     aspect_ratio: AspectRatioEnum = Field(
@@ -184,6 +184,7 @@ class CreateImagenDto(BaseDto):
     ) -> GenerationModelEnum:
         """Ensures that only supported generation models for imagen are used."""
         valid_generation_models = [
+            GenerationModelEnum.GEMINI_NANO_BANANA_2_1,
             GenerationModelEnum.IMAGEN_4_UPSCALE_PREVIEW,
             GenerationModelEnum.GEMINI_2_5_FLASH_IMAGE_PREVIEW,
             GenerationModelEnum.GEMINI_2_5_FLASH_IMAGE,

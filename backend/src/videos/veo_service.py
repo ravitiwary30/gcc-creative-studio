@@ -382,13 +382,23 @@ def _process_video_in_background(
                         permanent_thumbnail_gcs_uris = []
                         final_gcs_uris = []
                         raw_data_dict = None
-                        model_name_for_api = request_dto.generation_model.value
+                        vertex_video_model_map = {
+                            GenerationModelEnum.VEO_3_1: "veo-3.1-generate-001",
+                            GenerationModelEnum.VEO_3_1_FAST: "veo-3.1-fast-generate-001",
+                            GenerationModelEnum.VEO_3_1_LITE: "veo-3.1-lite-generate-001",
+                            GenerationModelEnum.GEMINI_OMNI_1_1_FLASH: "gemini-omni-1.1-flash-preview",
+                        }
+                        model_name_for_api = vertex_video_model_map.get(
+                            request_dto.generation_model,
+                            request_dto.generation_model.value,
+                        )
 
                         start_time = time.monotonic()
 
                         if request_dto.generation_model in [
                             GenerationModelEnum.GEMINI_OMNI,
                             GenerationModelEnum.GEMINI_OMNI_FLASH_PREVIEW,
+                            GenerationModelEnum.GEMINI_OMNI_1_1_FLASH,
                             GenerationModelEnum.GEMINI_OMNI_1_1_FLASH_PREVIEW,
                         ]:
                             worker_logger.info(

@@ -49,7 +49,7 @@ class MultimodalGenerationRequestDto(BaseDto):
     model: Annotated[
         GenerationModelEnum,
         Field(
-            default=GenerationModelEnum.GEMINI_3_5_FLASH,
+            default=GenerationModelEnum.GEMINI_3_8_FLASH,
             description="The Gemini model to use.",
         ),
     ]

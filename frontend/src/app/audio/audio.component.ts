@@ -309,8 +309,8 @@ export class AudioComponent implements OnInit {
     } else if (this.selectedModel === 'chirp') {
       backendModel = GenerationModelEnum.CHIRP_3;
     } else {
-      // Default to Flash TTS for Gemini selection
-      backendModel = GenerationModelEnum.GEMINI_2_5_FLASH_TTS;
+      // Default to Gemini 3.8 Flash TTS for Gemini selection
+      backendModel = GenerationModelEnum.GEMINI_3_8_FLASH_TTS;
     }
 
     // 2. Construct the generic DTO

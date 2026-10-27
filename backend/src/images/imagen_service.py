@@ -664,13 +664,27 @@ def _process_image_in_background(
 
                     # original_prompt was unused
                     if request_dto.enhance_prompt:
-                        rewritten_prompt = (
-                            await gemini_service.enhance_prompt_from_dto(
-                                dto=request_dto,
-                                target_type=PromptTargetEnum.IMAGE,
+                        try:
+                            rewritten_prompt = (
+                                await gemini_service.enhance_prompt_from_dto(
+                                    dto=request_dto,
+                                    target_type=PromptTargetEnum.IMAGE,
+                                )
                             )
-                        )
-                        request_dto.prompt = rewritten_prompt
+                            request_dto.prompt = rewritten_prompt
+                        except Exception as e:
+                            worker_logger.error(
+                                f"Prompt enhancement failed: {e}",
+                                exc_info=True,
+                            )
+                            await media_repo.update(
+                                media_item_id,
+                                {
+                                    "status": JobStatusEnum.FAILED,
+                                    "error_message": str(e),
+                                },
+                            )
+                            return
                     else:
                         rewritten_prompt = request_dto.prompt
 

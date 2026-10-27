@@ -49,7 +49,52 @@ class GenerationModelEnum(str, Enum):
     """Enum representing the available generation models."""
 
     # Image-Specific Models
+    GEMINI_NANO_BANANA_2_1 = "gemini-nano-banana-2.1"
+    GEMINI_3_1_FLASH_IMAGE = "gemini-3.1-flash-image"
+    GEMINI_3_1_FLASH_LITE_IMAGE = "gemini-3.1-flash-lite-image"
+    GEMINI_3_PRO_IMAGE = "gemini-3-pro-image"
+    VTO = "virtual-try-on-001"
     IMAGEN_4_UPSCALE_PREVIEW = "imagen-4.0-upscale-preview"
+
+    # Text / Multimodal LLM Models (Gemini 3 & 4 Series)
+    GEMINI_4_ARGON = "gemini-4-argon"
+    GEMINI_3_8_FLASH = "gemini-3.8-flash"
+    GEMINI_3_7_FLASH = "gemini-3.7-flash"
+    GEMINI_3_5_FLASH_LITE = "gemini-3.5-flash-lite"
+    GEMINI_3_1_FLASH_LITE = "gemini-3.1-flash-lite"
+    GEMINI_3_1_PRO_PREVIEW = "gemini-3.1-pro-preview"
+    GEMINI_3_FLASH_PREVIEW = "gemini-3-flash-preview"
+
+    # Video-Specific Models
+    VEO_3_1 = "veo-3.1"
+    VEO_3_1_FAST = "veo-3.1-fast"
+    VEO_3_1_LITE = "veo-3.1-lite"
+    GEMINI_OMNI_1_1_FLASH = "gemini-omni-1.1-flash"
+    GEMINI_OMNI_1_1_FLASH_PREVIEW = "gemini-omni-1.1-flash-preview"
+    VEO_3_1_FAST_GENERATE_001 = "veo-3.1-fast-generate-001"
+    VEO_3_1_LITE_GENERATE_001 = "veo-3.1-lite-generate-001"
+    VEO_3_1_LITE_PREVIEW = "veo-3.1-lite-generate-preview"
+    VEO_3_1_GENERATE_001 = "veo-3.1-generate-001"
+
+    # Audio-Specific Models
+    LYRIA_3_PRO_PREVIEW = "lyria-3-pro-preview"
+    LYRIA_3_CLIP_PREVIEW = "lyria-3-clip-preview"
+    LYRIA_2 = "lyria-2"
+    LYRIA_002 = "lyria-002"
+    GEMINI_3_8_LIVE = "gemini-3.8-live"
+    GEMINI_3_8_LIVE_EXTENDED_THINKING = "gemini-3.8-live-extended-thinking"
+    GEMINI_3_8_FLASH_TTS = "gemini-3.8-flash-tts"
+    GEMINI_3_8_FLASH_LITE_TTS = "gemini-3.8-flash-lite-tts"
+    GEMINI_3_5_TRANSCRIBE = "gemini-3.5-transcribe"
+    GEMINI_3_5_TRANSCRIBE_LIVE = "gemini-3.5-transcribe-live"
+    GEMINI_3_5_LIVE_TRANSLATE_PREVIEW = "gemini-3.5-live-translate-preview"
+    GEMINI_3_1_FLASH_TTS_PREVIEW = "gemini-3.1-flash-tts-preview"
+    CHIRP_3 = "chirp_3"
+
+    # Workbench Models
+    WORKBENCH_RENDER = "workbench-render"
+
+    # Deprecated models (For old generations only, do not use)
     GEMINI_2_5_PRO = "gemini-2.5-pro"
     GEMINI_2_5_FLASH = "gemini-2.5-flash"
     GEMINI_3_5_FLASH = "gemini-3.5-flash"
@@ -57,44 +102,18 @@ class GenerationModelEnum(str, Enum):
     GEMINI_2_5_FLASH_IMAGE_PREVIEW = "gemini-2.5-flash-image-preview"
     GEMINI_2_5_FLASH_IMAGE = "gemini-2.5-flash-image"
     GEMINI_3_PRO_PREVIEW = "gemini-3-pro-preview"
-    GEMINI_3_PRO_IMAGE = "gemini-3-pro-image"
-    GEMINI_3_1_FLASH_IMAGE = "gemini-3.1-flash-image"
-    GEMINI_3_1_FLASH_LITE_IMAGE = "gemini-3.1-flash-lite-image"
-    GEMINI_3_FLASH_PREVIEW = "gemini-3-flash-preview"
-    VTO = "virtual-try-on-001"
-
-    # Text / LLM Models
-    GEMINI_3_7_FLASH = "gemini-3.7-flash"
-    GEMINI_3_1_PRO_PREVIEW = "gemini-3.1-pro-preview"
     GEMINI_3_1_FLASH_PREVIEW = "gemini-3.1-flash-preview"
     GEMINI_3_1_FLASH_LITE_PREVIEW = "gemini-3.1-flash-lite-preview"
-
-    # Video-Specific Models
     GEMINI_OMNI = "gemini-omni-generate-preview"
     GEMINI_OMNI_FLASH_PREVIEW = "gemini-omni-flash-preview"
-    GEMINI_OMNI_1_1_FLASH_PREVIEW = "gemini-omni-1.1-flash-preview"
-    VEO_3_1_FAST_GENERATE_001 = "veo-3.1-fast-generate-001"
-    VEO_3_1_LITE_GENERATE_001 = "veo-3.1-lite-generate-001"
-    VEO_3_1_LITE_PREVIEW = "veo-3.1-lite-generate-preview"
-    VEO_3_1_GENERATE_001 = "veo-3.1-generate-001"
     VEO_3_1_PREVIEW = "veo-3.1-generate-preview"
     VEO_3_FAST = "veo-3.0-fast-generate-001"
     VEO_3_QUALITY = "veo-3.0-generate-001"
     VEO_3_FAST_PREVIEW = "veo-3.0-fast-generate-preview"
     VEO_3_QUALITY_PREVIEW = "veo-3.0-generate-preview"
-    # Audio-Specific Models
-    LYRIA_002 = "lyria-002"
-    LYRIA_3_CLIP_PREVIEW = "lyria-3-clip-preview"
-    LYRIA_3_PRO_PREVIEW = "lyria-3-pro-preview"
-    CHIRP_3 = "chirp_3"
     GEMINI_2_5_FLASH_TTS = "gemini-2.5-flash-tts"
     GEMINI_2_5_FLASH_LITE_PREVIEW_TTS = "gemini-2.5-flash-lite-preview-tts"
     GEMINI_2_5_PRO_TTS = "gemini-2.5-pro-tts"
-    GEMINI_3_1_FLASH_TTS_PREVIEW = "gemini-3.1-flash-tts-preview"
-    # Workbench Models
-    WORKBENCH_RENDER = "workbench-render"
-
-    # Deprecated models (For old generations only, do not use)
     _DEPRECATED_VTO = "virtual-try-on-preview-08-04"
     GEMINI_3_PRO_IMAGE_PREVIEW = "gemini-3-pro-image-preview"
     GEMINI_3_1_FLASH_IMAGE_PREVIEW = "gemini-3.1-flash-image-preview"
@@ -117,6 +136,7 @@ class GenerationModelEnum(str, Enum):
     def is_gemini_image_model(self) -> bool:
         """Returns True if the model is a Gemini image generation model."""
         return self in [
+            GenerationModelEnum.GEMINI_NANO_BANANA_2_1,
             GenerationModelEnum.GEMINI_2_5_FLASH_IMAGE_PREVIEW,
             GenerationModelEnum.GEMINI_2_5_FLASH_IMAGE,
             GenerationModelEnum.GEMINI_3_PRO_IMAGE_PREVIEW,
@@ -130,6 +150,7 @@ class GenerationModelEnum(str, Enum):
     def valid_aspect_ratios(self) -> list["AspectRatioEnum"]:
         """Returns the valid aspect ratios for the model."""
         if self in [
+            GenerationModelEnum.GEMINI_NANO_BANANA_2_1,
             GenerationModelEnum.GEMINI_3_1_FLASH_IMAGE_PREVIEW,
             GenerationModelEnum.GEMINI_3_1_FLASH_IMAGE,
             GenerationModelEnum.GEMINI_3_1_FLASH_LITE_IMAGE,
@@ -175,6 +196,7 @@ class GenerationModelEnum(str, Enum):
     def max_total_inputs(self) -> int:
         """Returns the maximum number of total inputs allowed for the model."""
         if self in [
+            GenerationModelEnum.GEMINI_NANO_BANANA_2_1,
             GenerationModelEnum.GEMINI_3_PRO_IMAGE_PREVIEW,
             GenerationModelEnum.GEMINI_3_PRO_IMAGE,
             GenerationModelEnum.GEMINI_3_1_FLASH_IMAGE_PREVIEW,

@@ -42,7 +42,7 @@ class CreateAudioDto(BaseDto):
     )
 
     metadata_generation_model: GenerationModelEnum | str | None = Field(
-        default=GenerationModelEnum.GEMINI_3_5_FLASH,
+        default=GenerationModelEnum.GEMINI_3_8_FLASH,
         description="The Gemini model to use for synchronous metadata generation.",
     )
     titles: list[str] | None = Field(
@@ -96,13 +96,16 @@ class CreateAudioDto(BaseDto):
     ) -> GenerationModelEnum:
         allowed_audio_models = {
             GenerationModelEnum.LYRIA_002,
+            GenerationModelEnum.LYRIA_2,
             GenerationModelEnum.LYRIA_3_CLIP_PREVIEW,
             GenerationModelEnum.LYRIA_3_PRO_PREVIEW,
             GenerationModelEnum.CHIRP_3,
+            GenerationModelEnum.GEMINI_3_8_FLASH_TTS,
+            GenerationModelEnum.GEMINI_3_8_FLASH_LITE_TTS,
+            GenerationModelEnum.GEMINI_3_1_FLASH_TTS_PREVIEW,
             GenerationModelEnum.GEMINI_2_5_FLASH_TTS,
             GenerationModelEnum.GEMINI_2_5_FLASH_LITE_PREVIEW_TTS,
             GenerationModelEnum.GEMINI_2_5_PRO_TTS,
-            GenerationModelEnum.GEMINI_3_1_FLASH_TTS_PREVIEW,
         }
 
         if value not in allowed_audio_models:

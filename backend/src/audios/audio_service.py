@@ -512,7 +512,13 @@ def _process_audio_in_background(
                                         instance_dict, instance_value
                                     )
 
-                                    endpoint = f"projects/{cfg.PROJECT_ID}/locations/global/publishers/google/models/{request_dto.model.value}"
+                                    lyria_model_id = (
+                                        "lyria-002"
+                                        if request_dto.model
+                                        == GenerationModelEnum.LYRIA_2
+                                        else request_dto.model.value
+                                    )
+                                    endpoint = f"projects/{cfg.PROJECT_ID}/locations/global/publishers/google/models/{lyria_model_id}"
                                     response = await asyncio.to_thread(
                                         ai_client.predict,
                                         endpoint=endpoint,
@@ -626,10 +632,12 @@ def _process_audio_in_background(
 
 class AudioService:
     GEMINI_MODELS = {
+        GenerationModelEnum.GEMINI_3_8_FLASH_TTS,
+        GenerationModelEnum.GEMINI_3_8_FLASH_LITE_TTS,
+        GenerationModelEnum.GEMINI_3_1_FLASH_TTS_PREVIEW,
         GenerationModelEnum.GEMINI_2_5_FLASH_TTS,
         GenerationModelEnum.GEMINI_2_5_FLASH_LITE_PREVIEW_TTS,
         GenerationModelEnum.GEMINI_2_5_PRO_TTS,
-        GenerationModelEnum.GEMINI_3_1_FLASH_TTS_PREVIEW,
     }
     TTS_MODELS = {
         GenerationModelEnum.CHIRP_3,
@@ -637,6 +645,7 @@ class AudioService:
     # Lyria 2 is served through the regional PredictionService (:predict).
     LYRIA_2_MODELS = {
         GenerationModelEnum.LYRIA_002,
+        GenerationModelEnum.LYRIA_2,
     }
     # Lyria 3 is served only through the Interactions API on `global`.
     LYRIA_3_MODELS = {
